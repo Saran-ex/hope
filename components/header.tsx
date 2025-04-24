@@ -3,9 +3,9 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { useAuth } from "@/components/auth-provider"
-import { Button } from "@/components/ui/button"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import { useAuth } from "../components/auth-provider"
+import { Button } from "../components/ui/button"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "../components/ui/dropdown-menu"
 import { Menu, X, User } from "lucide-react"
 
 export default function Header() {
@@ -29,7 +29,7 @@ export default function Header() {
     <header className="sticky top-0 z-50 border-b bg-white shadow-sm">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <Link href="/" className="flex items-center space-x-2">
-          <span className="text-2xl font-bold text-navy-blue">CoolFix</span>
+          <span className="text-2xl font-bold text-navy-blue">GK</span>
         </Link>
 
         {/* Desktop Navigation */}

@@ -1,7 +1,7 @@
 import type React from "react"
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
+import { Button } from "../components/ui/button"
+import { Card, CardContent, CardFooter, CardHeader } from "../components/ui/card"
 import { ArrowRight } from "lucide-react"
 
 interface ServiceCardProps {

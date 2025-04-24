@@ -1,8 +1,8 @@
 "use client"
 
 import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "../components/ui/button"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../components/ui/card"
 import {
   Dialog,
   DialogContent,
@@ -10,9 +10,9 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog"
-import { Badge } from "@/components/ui/badge"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+} from "../components/ui/dialog"
+import { Badge } from "../components/ui/badge"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs"
 import { Calendar, Clock, MapPin, AlertTriangle } from "lucide-react"
 
 // Mock data for bookings

@@ -3,12 +3,12 @@
 import type React from "react"
 
 import { useState } from "react"
-import { useAuth } from "@/components/auth-provider"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Separator } from "@/components/ui/separator"
-import { Alert, AlertDescription } from "@/components/ui/alert"
+import { useAuth } from "../components/auth-provider"
+import { Button } from "../components/ui/button"
+import { Input } from "../components/ui/input"
+import { Label } from "../components/ui/label"
+import { Separator } from "../components/ui/separator"
+import { Alert, AlertDescription } from "../components/ui/alert"
 import { Loader2 } from "lucide-react"
 
 export function UserProfile() {

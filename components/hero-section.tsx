@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
+import { Button } from "../components/ui/button"
 import { ArrowRight } from "lucide-react"
 
 export function HeroSection() {
@@ -50,7 +50,7 @@ export function HeroSection() {
       <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
         <Image
           className="h-56 w-full object-cover sm:h-72 md:h-96 lg:h-full lg:w-full"
-          src="/placeholder.svg?height=1080&width=1920"
+          src="ac ser.jpg?height=100&width=1920"
           alt="AC Technician working"
           width={1920}
           height={1080}

@@ -2,12 +2,12 @@
 
 import { useState } from "react"
 import { useRouter } from "next/navigation"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Alert, AlertDescription } from "@/components/ui/alert"
+import { Button } from "../components/ui/button"
+import { Input } from "../components/ui/input"
+import { Label } from "../components/ui/label"
+import { Alert, AlertDescription } from "../components/ui/alert"
 import { Loader2 } from "lucide-react"
-import supabase from "@/lib/supabase"
+import supabase from "../lib/supabase"
 
 export function SignUpForm() {
   const router = useRouter()
@@ -24,31 +24,28 @@ export function SignUpForm() {
     e.preventDefault()
     setError("")
 
-    // Validation
     if (!name || !email || !phone || !password || !confirmPassword) {
-      setError("Please fill in all fields")
+      setError("Please fill in all fields.")
       return
     }
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    if (!emailRegex.test(email)) {
-      setError("Please enter a valid email address")
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setError("Please enter a valid email address.")
       return
     }
 
-    const phoneRegex = /^[0-9]{10}$/
-    if (!phoneRegex.test(phone)) {
-      setError("Please enter a valid 10-digit phone number")
+    if (!/^[0-9]{10}$/.test(phone)) {
+      setError("Phone number must be 10 digits.")
       return
     }
 
     if (password !== confirmPassword) {
-      setError("Passwords do not match")
+      setError("Passwords do not match.")
       return
     }
 
     if (password.length < 6) {
-      setError("Password must be at least 6 characters")
+      setError("Password must be at least 6 characters.")
       return
     }
 
@@ -59,31 +56,40 @@ export function SignUpForm() {
         email,
         password,
         options: {
+          emailRedirectTo: `${window.location.origin}/login`,
           data: {
             name,
             phone,
           },
         },
       })
-    
-      if (signUpError) {
-        setError(signUpError.message)
-        return
+
+      if (signUpError) throw signUpError
+
+      // Check if user is confirmed (session only available if email confirmation is disabled)
+      if (data.session) {
+        // Store name and phone into the "profiles" table
+        await supabase.from("profiles").insert([
+          {
+            id: data.user?.id,
+            name,
+            phone,
+          },
+        ])
+
+        router.push("/dashboard")
+      } else {
+        // If email confirmation is enabled, tell user to confirm
+        setError("Please check your email to confirm your account.")
+        setTimeout(() => {
+          router.push("/login")
+        }, 3000)
       }
-    
-      if (data.user && !data.user.email_confirmed_at) {
-        setError("Check your email to confirm your account.")
-        return
-      }
-    
-      router.push("/dashboard")
     } catch (err: any) {
-      console.error("Supabase signUp error:", err)
-      setError(err?.message || "Unexpected error occurred.")
+      setError(err?.message || "Something went wrong.")
     } finally {
       setIsLoading(false)
     }
-    
   }
 
   return (
@@ -98,8 +104,6 @@ export function SignUpForm() {
         <Label htmlFor="name">Full Name</Label>
         <Input
           id="name"
-          type="text"
-          placeholder="John Doe"
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
@@ -111,7 +115,6 @@ export function SignUpForm() {
         <Input
           id="email"
           type="email"
-          placeholder="name@example.com"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
@@ -119,11 +122,9 @@ export function SignUpForm() {
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="phone">Phone Number</Label>
+        <Label htmlFor="phone">Phone</Label>
         <Input
           id="phone"
-          type="tel"
-          placeholder="9876543210"
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
           required
@@ -156,7 +157,7 @@ export function SignUpForm() {
         {isLoading ? (
           <>
             <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-            Creating account...
+            Creating Account...
           </>
         ) : (
           "Create Account"
