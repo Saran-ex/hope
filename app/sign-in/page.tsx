@@ -1,6 +1,7 @@
-import { SignInForm } from "@/components/sign-in-form"
+import { SignInForm } from "../../components/sign-in-form"
 import Link from "next/link"
-
+// somthing
+// import { useAuth } from "../../components/auth-provider"
 export default function SignInPage() {
   return (
     <div className="container mx-auto flex min-h-[calc(100vh-200px)] items-center justify-center py-12">
