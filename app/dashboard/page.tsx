@@ -1,13 +1,14 @@
 "use client"
+// just testing push
 
 import { useEffect } from "react"
 import { useRouter } from "next/navigation"
-import { useAuth } from "@/components/auth-provider"
-import { BookingHistory } from "@/components/booking-history"
-import { UserProfile } from "@/components/user-profile"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Card, CardContent } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
+import { useAuth } from "../../components/auth-provider"
+import { BookingHistory } from "../../components/booking-history"
+import { UserProfile } from "../../components/user-profile"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../components/ui/tabs"
+import { Card, CardContent } from "../../components/ui/card"
+import { Button } from "../../components/ui/button"
 
 export default function DashboardPage() {
   const { user, isAuthenticated } = useAuth()
