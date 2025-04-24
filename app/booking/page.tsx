@@ -1,11 +1,12 @@
 "use client"
+// just testing push
 
 import { useState, useEffect } from "react"
 import { useSearchParams, useRouter } from "next/navigation"
-import { useAuth } from "@/components/auth-provider"
-import { BookingForm } from "@/components/booking-form"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
+import { useAuth } from "../../components/auth-provider"
+import { BookingForm } from "../../components/booking-form"
+import { Button } from "../../components/ui/button"
+import { Card, CardContent } from "../../components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Wrench, Thermometer, Fan } from "lucide-react"
 
