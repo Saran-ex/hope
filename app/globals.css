@@ -1,7 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+/*
+  This file contains the global styles for the application.
+  It includes Tailwind CSS base styles, custom styles, and theme colors.
+*/
 @layer base {
   :root {
     --background: 0 0% 100%;
